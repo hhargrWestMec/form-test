@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        datalist {
+            display: flex;
+        }
+    </style>
+</head>
+<body>
+
+    <p>Enter a phone number :<span></span></p>
+    <input type="tel" name="num" id="num" pattern="^\d{3}-\d{3}-\d{4}">
+    <input type="submit" id="submit" name="submit" value="submit" onclick="checkNumber();">
+
+
+    <br><br><br>
+    <input type="range" min="0" max="100" value="50">
+    <br>
+    <meter min="0" max="10" value="5"> </meter>
+    <br><br><br>
+
+    <input type="number" id="num1" name="num1" oninput="sum();">
+    <input type="number" id="num2" name="num2" oninput="sum();">
+    <p>Sum: </p>
+
+    <br><br><br>
+    <label for="dropdown">Choose a flavor</label>
+
+    <input list="flavor" name="dropdown">
+    <datalist id="flavor">
+        <option value="Chocolate">
+        <option value="Coconut">
+        <option value="Mint">
+        <option value="Strawberry">
+        <option value="Vanilla">
+    </datalist>
+    
+
+    <script>
+        function checkNumber () {
+            const num = document.getElementById('num');
+
+            let valid = num.checkValidity();
+            console.log(valid);
+            let text = 'Invalid';
+
+            if (valid) { text = 'Valid' };
+
+            document.getElementsByTagName('span')[0].innerText = text;
+        }
+
+        function sum () {
+            const num1 = document.getElementById('num1').value;
+            const num2 = document.getElementById('num2').value;
+            let sum = Number(num1) + Number(num2);
+            document.getElementsByTagName('p')[1].innerText = `Sum: ${sum}`;
+        }
+
+
+    </script>
+    
+</body>
+</html>
